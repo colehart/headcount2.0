@@ -39,12 +39,12 @@ class Card extends Component {
   }
 
   toggleSelect = event => {
-    const card = event.target.parentElement.find('.Card')
+    // const card = event.target.parentElement.find('.Card')
 
-    debugger
+    // debugger
 
     this.setState({ isSelected: !this.state.isSelected })
-    this.props.adjustComparisons(card)
+    // this.props.adjustComparisons(card)
   }
 
   render() {
