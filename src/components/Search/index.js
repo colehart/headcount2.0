@@ -10,15 +10,15 @@ class Search extends Component {
     }
   }
 
-  handleInputChange = (event) => {
+  handleInputChange = event => {
     const { value } = event.target
+
     this.setState({query: value})
     this.props.findAllMatches(value);
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault()
-    this.handleInputChange(event)
   }
 
   render() {

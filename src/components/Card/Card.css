@@ -1,7 +1,7 @@
 /*CARD COMPONENT RELATED CSS GOES HERE*/
 .Card {
-  height: 300px;
-  width: 200px;
+  height: 350px;
+  width: 250px;
   margin: 5px 0;
   padding: 0.5rem;
   padding-bottom: 1.25rem;
@@ -14,9 +14,10 @@
   border-radius: 5%;
   background: rgb(255, 255, 255);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-sizing: border-box;
 }
 
-h2 {
+.Card h2 {
   text-align: center;
   grid-row: 1 / 2;
   font-family: "Roboto Condensed", sans-serif;
@@ -38,4 +39,8 @@ ul {
 
 .low {
   color: #EF713B;
+}
+
+.selected {
+  border: 5px solid #EF713B;
 }
