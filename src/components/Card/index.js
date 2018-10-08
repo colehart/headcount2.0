@@ -12,7 +12,7 @@ class Card extends Component {
     }
   }
 
-  makeCards = stats => {
+  makeCard = stats => {
     const isSelected = this.state.isSelected
 
     return Object.keys(stats).map((year, index) => {
@@ -39,12 +39,12 @@ class Card extends Component {
   }
 
   toggleSelect = event => {
-    const card = event.target.parentElement.find('.Card')
+    // const card = event.target.parentElement.find('.Card')
 
-    debugger
+    // debugger
 
     this.setState({ isSelected: !this.state.isSelected })
-    this.props.adjustComparisons(card)
+    // this.props.adjustComparisons(card)
   }
 
   render() {
@@ -59,7 +59,7 @@ class Card extends Component {
       >
         <h2 className="Card-title">{location}</h2>
         <ul className="Card-list">
-          { stats ? this.makeCards(stats) : null}
+          { stats ? this.makeCard(stats) : null}
         </ul>
       </article>
     )
