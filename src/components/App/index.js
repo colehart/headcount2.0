@@ -10,23 +10,24 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      kinder: {},
+      repository: {},
+      districtStats: {},
       comparisons: []
     }
   }
 
   findAllMatches = (query) => {
-    const kinder = new DistrictRepository(kinderData)
-    const matchingNames = kinder.findAllMatches(query)
+    const repo = this.state.repository
+    const matchingNames = repo.findAllMatches(query)
     const allMatches = {}
 
     matchingNames.forEach(name => {
-      const district = kinder.findByName(name)
+      const district = repo.findByName(name)
 
       allMatches[name] = district
     })
 
-    this.setState({kinder: allMatches})
+    this.setState({districtStats: allMatches})
   }
 
   adjustComparisons = card => {
@@ -52,16 +53,26 @@ class App extends Component {
 
   }
 
+  updateRepository = (dataFile) => {
+    const district = new DistrictRepository(dataFile)
+
+    this.setState({
+      repository: district,
+      districtStats: district.stats
+    })
+  }
+
   componentDidMount() {
     const kinder = new DistrictRepository(kinderData)
 
     this.setState({
-      kinder: kinder.stats
+      repository: kinder,
+      districtStats: kinder.stats
     })
   }
 
   render() {
-    const kinder = this.state.kinder
+    const districtStats = this.state.districtStats
     const comps = this.state.comparisons
 
     return (
@@ -69,7 +80,7 @@ class App extends Component {
         <Header findAllMatches={this.findAllMatches}/>
         { (comps.length > 0 && comps.length > 3) ? <Comparator /> : null}
         <CardContainer
-          districts={kinder}
+          districts={districtStats}
           adjustComparisons={this.adjustComparisons}
         />
       </div>
